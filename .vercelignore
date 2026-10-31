@@ -1,0 +1,8 @@
+.local
+.secrets
+.env*
+.git
+AGENTS.md
+node_modules
+dist
+coverage

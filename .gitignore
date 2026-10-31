@@ -1,0 +1,18 @@
+.local/
+.secrets/
+.env
+.env.*
+!.env.example
+node_modules/
+.next/
+dist/
+coverage/
+*.log
+.DS_Store
+
+# Local collaboration instructions reference private memory paths.
+AGENTS.md
+.vercel
+.env*
+
+.vercel/
