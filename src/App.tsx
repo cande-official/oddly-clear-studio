@@ -1096,17 +1096,31 @@ export function App() {
             <div className="connection-status">
               <i className={config?.ready ? "connected" : ""} />
               {config?.ready
-                ? "Meta is enabled on this Mac"
+                ? config.hosted
+                  ? "Meta is enabled for this studio"
+                  : "Meta is enabled on this Mac"
                 : config?.keyPresent
                   ? "Key found. Live calls are disabled."
                   : "No Meta API key configured yet."}
             </div>
-            <p>
-              After checking your credits in Meta Billing, add these settings to
-              the project’s <code>.env.local</code>. Keep the key out of your
-              source repository.
-            </p>
-            <pre>MODEL_API_KEY=your-key{`\n`}META_API_ENABLED=true</pre>
+            {config?.hosted ? (
+              <p>
+                Live generation and tracking share a fixed demo allowance.
+                {typeof config.liveRemainingUsd === "number" &&
+                  ` About $${config.liveRemainingUsd.toFixed(2)} remains.`}
+                The verified example can be edited and exported without a new
+                model call.
+              </p>
+            ) : (
+              <>
+                <p>
+                  After checking your credits in Meta Billing, add these
+                  settings to the project’s <code>.env.local</code>. Keep the
+                  key out of your source repository.
+                </p>
+                <pre>MODEL_API_KEY=your-key{`\n`}META_API_ENABLED=true</pre>
+              </>
+            )}
             <p className="micro-copy">
               Standard models only. No key is sent to the browser. Meta’s
               free-credit terms may permit product improvement use; check
