@@ -367,7 +367,7 @@ export function App() {
           </button>
           <button className="model-status" onClick={() => setModal("models")}>
             <i className={config?.ready ? "connected" : ""} />
-            {config?.ready ? "Meta enabled" : "Connect Meta"}
+            {initial ? "Loading studio…" : config?.ready ? "Meta enabled" : "Connect Meta"}
           </button>
           <button
             className="primary"
@@ -406,7 +406,7 @@ export function App() {
                 disabled={busy || initial}
                 onClick={() => setModal("new")}
               >
-                <Icon name="plus" /> Start a film
+                <Icon name="plus" /> {initial ? "Opening your workspace…" : "Start a film"}
               </button>
               <button
                 className="text-button"

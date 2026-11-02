@@ -267,6 +267,7 @@ i.connected {
   letter-spacing: 1.3px;
 }
 .media-thumb {
+  flex-shrink: 0;
   margin-top: 13px;
   border-radius: 4px;
   overflow: hidden;
@@ -1327,7 +1328,13 @@ i.connected {
     height: auto;
   }
   .media-panel {
-    display: none;
+    display: flex;
+    border-right: 0;
+    border-bottom: 1px solid var(--line);
+    padding-bottom: 20px;
+  }
+  .media-panel .media-thumb {
+    max-width: 240px;
   }
   .editor {
     min-height: 750px;
